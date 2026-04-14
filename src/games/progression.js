@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import runEngine from '../index.js';
 
 const description = 'What number is missing in the progression?';
@@ -11,15 +12,16 @@ const generateProgression = (start, step, length) => {
 };
 
 const getRoundData = () => {
-  const start = Math.floor(Math.random() * 20);
-  const step = Math.floor(Math.random() * 10) + 1;
-  const length = Math.floor(Math.random() * 6) + 5;
+  const start = crypto.randomInt(0, 21);
+  const step = crypto.randomInt(1, 11);
+  const length = crypto.randomInt(5, 11);
   const progression = generateProgression(start, step, length);
-  const hiddenIndex = Math.floor(Math.random() * length);
+  const hiddenIndex = crypto.randomInt(0, length);
   const correctAnswer = String(progression[hiddenIndex]);
 
   progression[hiddenIndex] = '..';
   const question = progression.join(' ');
+  
   return [question, correctAnswer];
 };
 

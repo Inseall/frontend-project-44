@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import runEngine from '../index.js';
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
@@ -11,7 +12,7 @@ const isPrime = (num) => {
 };
 
 const getRoundData = () => {
-  const number = Math.floor(Math.random() * 50) + 1; 
+  const number = crypto.randomInt(1, 51); 
   const question = String(number);
   const correctAnswer = isPrime(number) ? 'yes' : 'no';
 
