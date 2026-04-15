@@ -1,8 +1,6 @@
 import crypto from 'crypto'
 import runEngine from '../index.js'
-
 const description = 'What number is missing in the progression?'
-
 const generateProgression = (start, step, length) => {
   const progression = [];
   for (let i = 0; i < length; i += 1) {
@@ -10,7 +8,6 @@ const generateProgression = (start, step, length) => {
   }
   return progression
 }
-
 const getRoundData = () => {
   const start = crypto.randomInt(0, 21)
   const step = crypto.randomInt(1, 11)
@@ -18,13 +15,10 @@ const getRoundData = () => {
   const progression = generateProgression(start, step, length)
   const hiddenIndex = crypto.randomInt(0, length)
   const correctAnswer = String(progression[hiddenIndex])
-
   progression[hiddenIndex] = '..'
   const question = progression.join(' ')
-  
   return [question, correctAnswer]
 }
-
 export default () => {
-  runEngine(description, getRoundData);
+  runEngine(description, getRoundData)
 }
